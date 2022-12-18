@@ -3,7 +3,5 @@
 <launch>
 
     <node name="client" pkg="ros_fsm" type="node_client.py" output="screen"/>
-    <node name="server1" pkg="ros_fsm" type="node_server1.py" output="screen"/>
-    <node name="server2" pkg="ros_fsm" type="node_server2.py" output="screen"/>
-    
+
 </launch>
