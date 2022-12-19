@@ -78,25 +78,21 @@ if __name__ == '__main__':
     # Start Node 1
     node1_response = start_node(node1_name)
     
-    '''
-    # Execute Node 1 for a specific amount of time (e.g. 5 sec) and then kill it
-    rospy.sleep(5)
-    node1_response = stop_node(node1_process, node1_name)
-    
+    '''    
     # Wait for node to kill himself after finishing its tasks. Check in the node how to do this.
     while rosnode.rosnode_ping("/"+str(node1_name), max_count=1):
         rospy.sleep(1.0)
     '''
+    
+    while rosnode.rosnode_ping("/"+str(node1_name.split('.')[0]), max_count=1):
+        rospy.sleep(1.0)
+    
     # Start Node 2
-    node2_response = start_node(node2_name)
+    # node2_response = start_node(node2_name)
     '''
     # Execute Node 2 for a specific amount of time (e.g. 5 sec) and then kill it
     rospy.sleep(5)
     node2_response = stop_node(node2_process, node2_name)
-    
-    # Wait for node to kill himself after finishing its tasks. Check in the node how to do this.
-    while rosnode.rosnode_ping("/"+str(node2_name), max_count=1):
-        rospy.sleep(1.0)
     '''
     
     rospy.spin()

@@ -21,6 +21,8 @@ if __name__ == '__main__':
 
     # Node is also stopped on node shutdown. This allows stopping to be done via service call or regular Ctrl-C
     rospy.on_shutdown(node.stop_srv)
+    
+    counter = 0
 
     while not rospy.is_shutdown():
         if node.stopped:  # stop node if recording has finished
@@ -33,6 +35,10 @@ if __name__ == '__main__':
             # to stop the node when done with its tasks:
             node.stop_srv()
             """
+            if counter >= 10:
+                node.stop_srv()
+                
             rospy.loginfo("%s is doing stuff", rospy.get_name())
+            counter += 1
         
         rate.sleep()
